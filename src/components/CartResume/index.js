@@ -1,0 +1,59 @@
+import React, { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
+
+import { useCart } from '../../hooks/CartContext'
+import api from '../../services/api'
+import formatCurrency from '../../utils/formatCurrency'
+import { Button } from '../Button'
+import { Container } from './syles'
+
+export function CartResume() {
+  const [finalPrice, setFinalPrice] = useState(0)
+  const [deliveryTax] = useState(5)
+
+  const { cartProducts } = useCart()
+
+  useEffect(() => {
+    const allSumItems = cartProducts.reduce((acc, current) => {
+      return current.price * current.quantity + acc
+    }, 0)
+
+    setFinalPrice(allSumItems)
+  }, [cartProducts])
+
+  const sendOrders = async () => {
+    const infoCart = cartProducts.map(prd => {
+      return { id: prd.id, quantity: prd.quantity }
+    })
+
+    await toast.promise(api.post('orders', { products: infoCart }), {
+      pending: 'Realizando seu pedido',
+      success: 'Pedido realizado',
+      error: 'Falha ao tentar realizar o seu pedido, tente novamente'
+    })
+  }
+
+  return (
+    <div>
+      <Container>
+        <div className="container-top">
+          <h2 className="title">Resumo do Pedido</h2>
+          <p className="items">Itens</p>
+          <p className="items-price">{formatCurrency(finalPrice)}</p>
+          <p className="tax">Taxa de entrega</p>
+          <p className="tax-price">{formatCurrency(deliveryTax)}</p>
+        </div>
+        <div className="container-bottom">
+          <p>Total</p>
+          <p>{formatCurrency(finalPrice + deliveryTax)}</p>
+        </div>
+      </Container>
+      <Button
+        style={{ width: '100%', marginTop: 30 }}
+        onClick={() => sendOrders()}
+      >
+        Finalizar Pedido
+      </Button>
+    </div>
+  )
+}
