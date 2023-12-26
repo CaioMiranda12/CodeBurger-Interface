@@ -13,7 +13,7 @@ const listLinks = [
   {
     id: 2,
     label: 'Listar Produtos',
-    link: paths.Products,
+    link: paths.ListProducts,
     icon: ShoppingCartIcon
   }
 ]

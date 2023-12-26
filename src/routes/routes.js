@@ -9,10 +9,10 @@ function MyRoutes() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/cadastro" element={<Register />} />
+        <Route path={paths.Login} element={<Login />} />
+        <Route path={paths.Register} element={<Register />} />
         <Route
-          path="/"
+          path={paths.Home}
           element={
             <PrivateRoute>
               <Home />
@@ -20,7 +20,7 @@ function MyRoutes() {
           }
         />
         <Route
-          path="/produtos"
+          path={paths.Products}
           element={
             <PrivateRoute>
               <Products />
@@ -28,7 +28,7 @@ function MyRoutes() {
           }
         />
         <Route
-          path="/carrinho"
+          path={paths.Cart}
           element={
             <PrivateRoute>
               <Cart />
@@ -44,7 +44,7 @@ function MyRoutes() {
           }
         />
         <Route
-          path={paths.Products}
+          path={paths.ListProducts}
           element={
             <PrivateRoute isAdmin>
               <Admin />

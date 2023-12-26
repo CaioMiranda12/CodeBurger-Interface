@@ -14,7 +14,7 @@ import formatCurrency from '../../../utils/formatCurrency'
 import { Container, Img, EditIconStyles } from './styles'
 
 function ListProducts() {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState()
 
   useEffect(() => {
     async function loadProducts() {
@@ -47,24 +47,27 @@ function ListProducts() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {products.map(products => (
-              <TableRow
-                key={products.id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {products.name}
-                </TableCell>
-                <TableCell>{formatCurrency(products.price)}</TableCell>
-                <TableCell align="center">{isOffer(products.offer)}</TableCell>
-                <TableCell align="center">
-                  <Img src={products.url} alt="imagem-produto" />
-                </TableCell>
-                <TableCell>
-                  <EditIconStyles></EditIconStyles>
-                </TableCell>
-              </TableRow>
-            ))}
+            {products &&
+              products.map(products => (
+                <TableRow
+                  key={products.id}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {products.name}
+                  </TableCell>
+                  <TableCell>{formatCurrency(products.price)}</TableCell>
+                  <TableCell align="center">
+                    {isOffer(products.offer)}
+                  </TableCell>
+                  <TableCell align="center">
+                    <Img src={products.url} alt="imagem-produto" />
+                  </TableCell>
+                  <TableCell>
+                    <EditIconStyles></EditIconStyles>
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>

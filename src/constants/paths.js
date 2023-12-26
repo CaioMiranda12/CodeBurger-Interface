@@ -1,6 +1,12 @@
 const paths = {
+  Login: '/login',
+  Register: '/cadastro',
+  Home: '/',
+  Products: '/produtos',
+  Cart: '/carrinho',
+
   Order: '/pedidos',
-  Products: '/listar-produtos',
+  ListProducts: '/listar-produtos',
   EditProduct: '/editar-produto',
   NewProduct: '/novo-produto'
 }
