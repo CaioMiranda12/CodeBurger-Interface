@@ -5,7 +5,8 @@ export const Container = styled.div`
   box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.15);
   height: 70px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0px 70px;
 `
 
 export const ContainerLeft = styled.div`

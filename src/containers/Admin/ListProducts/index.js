@@ -8,13 +8,16 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
+import paths from '../../../constants/paths'
 import api from '../../../services/api'
 import formatCurrency from '../../../utils/formatCurrency'
 import { Container, Img, EditIconStyles } from './styles'
 
 function ListProducts() {
   const [products, setProducts] = useState()
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function loadProducts() {
@@ -33,6 +36,10 @@ function ListProducts() {
     return <CancelIcon style={{ color: '#CC1717' }} />
   }
 
+  function editProduct(product) {
+    navigate(paths.EditProduct, { state: { product } })
+  }
+
   return (
     <Container>
       <TableContainer component={Paper}>
@@ -48,23 +55,21 @@ function ListProducts() {
           </TableHead>
           <TableBody>
             {products &&
-              products.map(products => (
+              products.map(product => (
                 <TableRow
-                  key={products.id}
+                  key={product.id}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {products.name}
+                    {product.name}
                   </TableCell>
-                  <TableCell>{formatCurrency(products.price)}</TableCell>
+                  <TableCell>{formatCurrency(product.price)}</TableCell>
+                  <TableCell align="center">{isOffer(product.offer)}</TableCell>
                   <TableCell align="center">
-                    {isOffer(products.offer)}
-                  </TableCell>
-                  <TableCell align="center">
-                    <Img src={products.url} alt="imagem-produto" />
+                    <Img src={product.url} alt="imagem-produto" />
                   </TableCell>
                   <TableCell>
-                    <EditIconStyles></EditIconStyles>
+                    <EditIconStyles onClick={() => editProduct(product)} />
                   </TableCell>
                 </TableRow>
               ))}

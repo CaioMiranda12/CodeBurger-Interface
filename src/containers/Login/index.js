@@ -7,7 +7,7 @@ import * as Yup from 'yup'
 
 import CodeLogo from '../../assets/codeburger-logo.svg'
 import LoginImage from '../../assets/login-img.svg'
-import { Button } from '../../components'
+import { ErrorMessage, Button } from '../../components'
 import { useUser } from '../../hooks/UserContext'
 import api from '../../services/api'
 import {
@@ -16,8 +16,7 @@ import {
   ContainerItens,
   Label,
   Input,
-  SingUpLink,
-  ErrorMessage
+  SingUpLink
 } from './styles'
 
 export function Login() {

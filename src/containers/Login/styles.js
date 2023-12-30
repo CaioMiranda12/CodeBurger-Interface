@@ -55,14 +55,6 @@ export const Input = styled.input`
   padding-left: 10px;
 `
 
-export const ErrorMessage = styled.p`
-  color: #cc1717;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-`
-
 export const SingUpLink = styled.p`
   color: #fff;
   font-size: 14px;

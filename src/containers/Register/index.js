@@ -7,7 +7,7 @@ import * as Yup from 'yup'
 
 import CodeLogo from '../../assets/codeburger-logo.svg'
 import RegisterImage from '../../assets/register-img.svg'
-import { Button } from '../../components'
+import { ErrorMessage, Button } from '../../components'
 import api from '../../services/api'
 import {
   Container,
@@ -15,8 +15,7 @@ import {
   ContainerItens,
   Label,
   Input,
-  SingUpLink,
-  ErrorMessage
+  SingUpLink
 } from './styles'
 
 export function Register() {

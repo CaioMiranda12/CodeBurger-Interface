@@ -19,7 +19,7 @@ export function MenuSideAdmin({ path }) {
         </ContainerLinks>
       ))}
       <hr></hr>
-      <ContainerLinks style={{ position: 'absolute', bottom: 30 }}>
+      <ContainerLinks style={{ position: 'fixed', bottom: 30 }}>
         <LogoutIcon style={{ color: '#ffffff' }} />
         <ListLink to={'/login'} onClick={logout}>
           Sair
