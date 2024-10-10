@@ -10,3 +10,6 @@
 
 - Banco de dados: PostgresSQL e MongoDB
 </p>
+
+<p>Infelizmente, tive problemas para colocar o site no ar, mas tem uma demonstração de video a seguir:</p>
+<a href="https://www.linkedin.com/feed/update/urn:li:activity:7174057842935513091/">https://www.linkedin.com/feed/update/urn:li:activity:7174057842935513091/</a>
